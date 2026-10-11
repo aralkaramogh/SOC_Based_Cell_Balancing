@@ -26,6 +26,14 @@ I_chg    = 1.25;                      % charge current [A]  (0.5C)
 V_cutoff = 4.20;                      % stop charging when ANY cell reaches this [V]
 V_resume = 4.15;                      % allow charging again when ALL cells are below this [V]
 
+%% BMS supervisor: timed cycle CHARGE -> REST -> DISCHARGE -> REST -> ...
+I_dis   = 1.25;                       % discharge (load) current [A]  (0.5C)
+V_min   = 3.00;                       % stop discharging when ANY cell falls to this [V]
+T_chg   = 90*60;                      % time in CHARGE [s]
+T_rest1 = 20*60;                      % time in REST after charging [s]
+T_dis   = 40*60;                      % time in DISCHARGE [s]
+T_rest2 = 10*60;                      % time in REST after discharging [s]
+
 %% Passive balancing
 R_bleed       = 47;                   % bleed resistor per cell [Ohm]  (~88 mA at 4.15 V)
 Bal_threshold = 0.01;                 % start bleeding a cell 1 % SOC above the lowest cell
@@ -33,4 +41,4 @@ Bal_hyst      = 0.005;                % stop bleeding when it is 0.5 % above the
 Ts_bms        = 1;                    % BMS sample time [s]
 
 %% Simulation
-t_stop = 3*3600;                      % [s]
+t_stop = 4*3600;                      % [s]  (one full cycle + start of the next)

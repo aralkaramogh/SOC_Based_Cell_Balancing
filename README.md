@@ -22,7 +22,8 @@ MATLAB / Simulink R2025b with Simscape, Simscape Electrical and Simscape Battery
 | `scripts/`  | `params_pack3s.m` (all numbers), `build_...m` (creates the model), `run_...m` (simulate + plot) |
 | `learning/` | Step-by-step learning files: step 1 (cell in a MATLAB script), step 2 (same cell in Simulink), step 2b (same cell in Simscape) |
 | `archive/`  | Earlier experiments, kept for reference only (not on the path) |
-| `results/`  | Figures written by the run script |
+| `results/`  | Figures written by the run script, model screenshots |
+| `docs/`     | `ppt_content.md`: slide-by-slide content for the presentation |
 | `work/`     | Simulink cache and generated files. Safe to delete. |
 | `resources/`| MATLAB project internals. Do not edit. |
 
@@ -41,7 +42,9 @@ MATLAB / Simulink R2025b with Simscape, Simscape Electrical and Simscape Battery
 - **Cell k** (masked subsystem): Battery (Table-Based) with its own bleed
   switch + bleed resistor, and a voltage sensor. Input: BleedCmd. Outputs: SOC and V.
 - **Charger**: constant-current source that follows `I_cmd`, plus a current sensor.
-- **BMS**: plain Simulink logic.
+- **BMS**: plain Simulink logic plus a **Supervisor** (MATLAB Function block, added by `scripts/add_supervisor.m`).
+  - Modes (timed cycle): CHARGE 90 min -> REST 20 min -> DISCHARGE 40 min (or until a cell hits `V_min`) -> REST 10 min -> CHARGE ...
+  - Balancing is enabled in CHARGE and REST, blocked in DISCHARGE.
   - Cut-off: charging stops when the highest cell reaches `V_cutoff` (4.20 V) and
     restarts when all cells are below `V_resume` (4.15 V).
   - Balancing: a cell's bleed resistor turns on when its SOC is more than
@@ -61,7 +64,8 @@ Starting SOC 0.80 / 0.75 / 0.75, with a 47 Ω bleed resistor (about 88 mA) and
 
 ## Next steps
 
-- [ ] BMS supervisor (modes: charge / balance / idle) that drives the balancing Enable input
+- [x] BMS supervisor (modes: charge / rest / discharge / rest) that drives the balancing Enable input
+- [x] Per-cell capacity and R0 (`Cap`, `R0_scale` in the params file)
 - [ ] CC-CV charging instead of the hard cut-off
 - [ ] Dashboard gauges for live SOC
 - [ ] Bleed-resistor power / thermal check

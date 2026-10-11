@@ -111,6 +111,7 @@ Simulink.BlockDiagram.arrangeSystem([mdl '/Charger']);
 set_param([mdl '/BMS'],'ContentPreviewEnabled','off');
 set_param([mdl '/Charger'],'ContentPreviewEnabled','off');
 
+add_supervisor(mdl);   % mode supervisor: CHARGE / REST / DISCHARGE / REST (scripts/add_supervisor.m)
 save_system(mdl, fullfile(root,'models',[mdl '.slx']));
 fprintf('Built and saved %s\n', fullfile(root,'models',[mdl '.slx']));
 
