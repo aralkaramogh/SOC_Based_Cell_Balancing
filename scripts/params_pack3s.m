@@ -17,7 +17,7 @@ Cell_R0 = [.070 .045 .035; .055 .036 .028; .050 .033 .026; .048 .032 .025;
 Cell_Vrange = [2.5 4.3];              % allowed terminal voltage window [V]
 
 %% Pack: 3 cells in series, deliberately unbalanced
-SOC0     = [0.80 0.75 0.75];          % initial SOC of Cell 1, 2, 3
+SOC0     = [0.68 0.75 0.70];          % initial SOC of Cell 1, 2, 3
 Cap      = [2.5 2.5 2.5];             % capacity of Cell 1, 2, 3 [Ah]   (step A: make them differ)
 R0_scale = [1.0 1.0 1.0];             % R0 multiplier of Cell 1, 2, 3   (1.5 = 50 % higher resistance)
 

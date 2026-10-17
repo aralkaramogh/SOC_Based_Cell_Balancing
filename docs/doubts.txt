@@ -1,0 +1,20 @@
+1. Update the picture name at bottom
+2. What is balancing active port in passive cell balancing block
+3.Why delay for bleed cmd
+4.What is terminator.
+5.Affect on no. of cycle of cell if we decipiate the battery
+6. What is hysterisis
+7. What is RC equivalent circuit
+8. WHat is 2. validation in methodology - what are we using for sim? simscape/script?
+9. what is cycle and bms sample rate - in how many mins the sim coompletes and how?
+10. whole cell model and validation
+11. flat 41 block model?
+12.understand battery look-up table
+13. what is matlab fn supervisor, 1s:...
+14. why rest 1 is 20 mins and rest 2 is 10 mins. all timings reason??
+15. Energy waster formula - Joules
+16. what is meants by spread settles at 0.5 hyst - how to understand that from graph
+17. capacity mismatch in result B slide 9
+18. what is R0 mulitplier
+19. how much time the sim is and in how much time it completes
+20. why compare cell with hand written script?

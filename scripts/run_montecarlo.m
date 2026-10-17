@@ -10,7 +10,7 @@ mdl  = 'pack3s_passive_balancing';
 root = fileparts(fileparts(mfilename('fullpath')));
 params_pack3s;                                   % gives Cap, SOC0, R_bleed ...
 
-if ~exist('N','var'),    N = 200; end
+if ~exist('N','var'),    N = 100; end
 if ~exist('seed','var'), seed = 42; end
 sig_cap = 0.02;      % 2 % std of capacity  (literature: mostly within +-5 % ~ 2.5 sigma)
 sig_r0  = 0.10;      % 10 % std of R0
